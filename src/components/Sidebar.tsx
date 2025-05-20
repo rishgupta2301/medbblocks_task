@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
         }`}
       >
         <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
-          <span className="text-xl font-bold text-primary-800">MediReg</span>
+          <span className="text-xl font-bold text-primary-800">Medblocks</span>
           <button
             type="button"
             className="rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -89,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
         <div className="flex flex-col w-64">
           <div className="flex flex-col flex-grow border-r border-gray-200 bg-white pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <span className="text-xl font-bold text-primary-800">MediReg</span>
+              <span className="text-xl font-bold text-primary-800">Medblocks</span>
             </div>
             <div className="mt-8 flex-grow flex flex-col">
               <nav className="flex-1 px-2 space-y-1">

@@ -136,7 +136,7 @@ const PatientList: React.FC = () => {
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 max-h-10">
               <button
                 type="button"
                 onClick={handleSearch}
@@ -157,7 +157,7 @@ const PatientList: React.FC = () => {
               <button
                 type="button"
                 onClick={downloadPatientData}
-                className="btn btn-secondary"
+                className="btn btn-secondary flex items-center"
                 disabled={patients.length === 0}
               >
                 <Download className="h-4 w-4 mr-1" /> Export

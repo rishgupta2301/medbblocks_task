@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
                 <Activity className="h-8 w-8 text-primary-600" />
-                <span className="ml-2 text-xl font-bold text-primary-800">MediReg</span>
+                <span className="ml-2 text-xl font-bold text-primary-800">Medblocks</span>
               </Link>
             </div>
           </div>
