@@ -14,7 +14,7 @@ A modern patient management system that runs entirely in your browser using PGli
 
 ## 🚀 Demo
 
-
+https://medblocks.netlify.app/
 
 ## 📦 Installation
 
