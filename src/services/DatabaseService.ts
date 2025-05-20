@@ -30,7 +30,6 @@ const initSchema = async (database: PGliteWorker) => {
 
 export const initDatabase = async (): Promise<PGliteWorker> => {
   if (!db) {
-    console.log("Initializing database...");
     try {
       const workerInstance = new Worker(new URL('/pglite-worker.js', import.meta.url), {
         type: 'module',
@@ -47,7 +46,6 @@ export const initDatabase = async (): Promise<PGliteWorker> => {
 
 export const registerPatient = async (patientData: any): Promise<any> => {
   const database = await initDatabase();
-  console.log("patientData-", patientData);
 
   const {
     first_name,
@@ -81,8 +79,6 @@ export const registerPatient = async (patientData: any): Promise<any> => {
       insurance_id || null,
     ]
   );
-  console.log("result-", result);
-
 //   return result[0];
   return result.rows ? result.rows[0] : null;
 };
@@ -93,7 +89,6 @@ export const getAllPatients = async (): Promise<any[]> => {
     const result = await database.query(
       "SELECT * FROM patients ORDER BY last_name, first_name"
     );
-    console.log("PGlite SELECT (getAllPatients) result:", result);
     return result.rows || [];
   } catch (error) {
     console.error('Error executing getAllPatients query:', error);
@@ -112,7 +107,6 @@ export const searchPatientsByName = async (
        ORDER BY last_name, first_name`,
       [`%${searchTerm}%`, `%${searchTerm}%`]
     );
-    console.log("PGlite SELECT (searchPatientsByName) result:", result);
     return result.rows || [];
    } catch (error) {
       console.error('Error executing searchPatientsByName query:', error);
@@ -126,9 +120,7 @@ export const executeQuery = async (
 ): Promise<any> => {
   try {
     const database = await initDatabase();
-    console.log("Executing query:", sqlQuery, "with params:", params);
     const result = await database.query(sqlQuery, params);
-    console.log("Query execution success:", result);
     return { success: true, data: result.rows || [], error: null };
   } catch (error: any) {
     console.error("Query execution error:", error);
