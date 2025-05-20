@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Activity, Bell } from 'lucide-react';
+import { Menu, Activity } from 'lucide-react';
 
 interface NavbarProps {
   onMenuClick: () => void;

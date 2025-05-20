@@ -9,4 +9,17 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['@electric-sql/pglite'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        format: 'es',
+      },
+    },
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    }
+  },
+  worker: {
+    format: 'es',
+  },
 })
