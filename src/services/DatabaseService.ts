@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PGlite } from "@electric-sql/pglite";
+import { PGliteWorker } from '@electric-sql/pglite/worker';
 
-let db: PGlite | null = null;
+let db: PGliteWorker | null = null;
 
-const initSchema = async (database: PGlite) => {
+const initSchema = async (database: PGliteWorker) => {
   await database.query(`
     CREATE TABLE IF NOT EXISTS patients (
       id SERIAL PRIMARY KEY,
@@ -28,11 +28,14 @@ const initSchema = async (database: PGlite) => {
   console.log("Database schema initialized");
 };
 
-export const initDatabase = async (): Promise<PGlite> => {
+export const initDatabase = async (): Promise<PGliteWorker> => {
   if (!db) {
     console.log("Initializing database...");
     try {
-      db = new PGlite("idb://my-pgdata");
+      const workerInstance = new Worker(new URL('/pglite-worker.js', import.meta.url), {
+        type: 'module',
+      });
+      db = new PGliteWorker(workerInstance);
       await initSchema(db);
     } catch (error) {
       console.error("Failed to initialize database:", error);
